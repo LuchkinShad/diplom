@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Главная страница</title>
+</head>
+<header th:insert="blocks/header :: header"></header>
+
+
+<body>
+<div class="container">
+    <p><strong>Редактирование адреса</strong></p><br>
+    <div th:each="el : ${addressModel}">
+        <form th:method="post" th:object="${addressModel}" th:action="'/address/' + ${el.id} + '/edit'">
+
+            <input type="text" th:field="*{country}" th:value="${el.country}" id="country" class="form-control"><br>
+            <div th:if="${country != null}" th:utext="${country}" class="text-danger">...</div><br>
+            <div th:if="${country_length != null}" th:utext="${country_length}" class="text-danger">...</div><br>
+
+            <input type="text" th:field="*{city}" th:value="${el.city}" id="city" class="form-control"><br>
+            <div th:if="${city != null}" th:utext="${city}" class="text-danger">...</div><br>
+            <div th:if="${city_length != null}" th:utext="${city_length}" class="text-danger">...</div><br>
+
+            <input type="text" th:field="*{street}" th:value="${el.street}" id="street" class="form-control"><br>
+            <div th:if="${street != null}" th:utext="${street}" class="text-danger">...</div><br>
+            <div th:if="${street_length != null}" th:utext="${street_length}" class="text-danger">...</div><br>
+
+            <input type="text" th:field="*{house}" th:value="${el.house}" id="house" class="form-control"><br>
+            <div th:if="${house != null}" th:utext="${house}" class="text-danger">...</div><br>
+            <div th:if="${house_length != null}" th:utext="${house_length}" class="text-danger">...</div><br>
+
+            <button type="submit" class="btn btn-success">Редактировать</button>
+        </form>
+    </div>
+</div>
+</body>
+
+<header th:insert="blocks/footer :: footer"></header>
+
+</html>

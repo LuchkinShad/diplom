@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Добавление новости</title>
+</head>
+<body>
+
+<header th:insert="blocks/header :: header"  ></header>
+<div class="container">
+  <p><strong>Добавление нового поставщика</strong></p><br>
+  <form th:method="post" th:object="${supplierModel}" th:action="@{/supplier/add}">
+
+    <input type="text" th:field="*{name}" id="name" placeholder="Введите название" class="form-control"><br>
+    <div th:if="${name != null}" th:utext="${name}" class="text-danger">...</div><br>
+    <div th:if="${name_length != null}" th:utext="${name_length}" class="text-danger">...</div><br>
+
+    <input type="text" th:field="*{inn}" id="inn" placeholder="Введите название ИНН" class="form-control"><br>
+    <div th:if="${inn != null}" th:utext="${inn}" class="text-danger">...</div><br>
+    <div th:if="${inn_length != null}" th:utext="${inn_length}" class="text-danger">...</div><br>
+
+    <input type="text" th:field="*{bic}" id="bic" placeholder="Введите название БИК" class="form-control"><br>
+    <div th:if="${bic != null}" th:utext="${bic}" class="text-danger">...</div><br>
+    <div th:if="${bic_length != null}" th:utext="${bic_length}" class="text-danger">...</div><br>
+
+    <input type="text" th:field="*{phone}" id="phone" placeholder="Введите телефон" class="form-control"><br>
+    <div th:if="${phone != null}" th:utext="${phone}" class="text-danger">...</div><br>
+    <div th:if="${phone_length != null}" th:utext="${phone_length}" class="text-danger">...</div><br>
+
+    <input type="text" th:field="*{addressModel.country}" id="city" placeholder="Введите страну" class="form-control"><br>
+    <div th:if="${country != null}" th:utext="${country}" class="text-danger">...</div><br>
+    <div th:if="${country_length != null}" th:utext="${country_length}" class="text-danger">...</div><br>
+
+    <input type="text" th:field="*{addressModel.city}" id="city" placeholder="Введите страну" class="form-control"><br>
+    <div th:if="${city != null}" th:utext="${city}" class="text-danger">...</div><br>
+    <div th:if="${city_length != null}" th:utext="${city_length}" class="text-danger">...</div><br>
+
+    <input type="text" th:field="*{addressModel.street}" id="street" placeholder="Введите улицу" class="form-control"><br>
+    <div th:if="${street != null}" th:utext="${street}" class="text-danger">...</div><br>
+    <div th:if="${street_length != null}" th:utext="${street_length}" class="text-danger">...</div><br>
+
+    <input type="text" th:field="*{addressModel.house}" id="house" placeholder="Введите улицу дом" class="form-control"><br>
+    <div th:if="${house != null}" th:utext="${house}" class="text-danger">...</div><br>
+    <div th:if="${house_length != null}" th:utext="${house_length}" class="text-danger">...</div><br>
+
+    <button type="submit" class="btn btn-success">Добавить производителя</button><br>
+  </form>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

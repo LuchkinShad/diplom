@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Главная страница</title>
+</head>
+<header th:insert="blocks/header :: header"></header>
+
+
+<body>
+
+<div class="container">
+    <div th:each="el : ${allProducts}">
+        <p th:text="${el.title}"></p>
+
+        <img th:src="'/product/img/' + ${el.previewImageId}" height="100px"><br>
+
+        <form method="post" th:action="'/products/' + ${el.id} + '/remove'">
+            <button type="submit" class="btn btn-success">Удалить</button>
+        </form>
+
+        <hr width="700px" align="left">
+    </div>
+</div>
+
+</body>
+
+<header th:insert="blocks/footer :: footer"></header>
+
+</html>

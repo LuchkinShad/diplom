@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Главная страница</title>
+</head>
+<header th:insert="blocks/header :: header"></header>
+
+<body>
+
+<div class="container">
+    <div th:each="el : ${allManufacturer}">
+        <p th:text="${el.name}"></p>
+        <p th:text="${el.inn}"></p>
+        <p th:text="${el.bic}"></p>
+        <p th:text="${el.phone}"></p>
+
+        <a th:href="'/manufacturer/' + ${el.id} + '/edit'">Редактировать</a>
+        <form method="post" th:action="'/manufacturer/' + ${el.id} + '/remove'">
+            <button type="submit" class="btn btn-success">Удалить</button>
+            <br>
+        </form>
+        <hr width="700px" align="left">
+    </div>
+</div>
+
+<nav aria-label="Pagination" th:if="${allManufacturer.totalPages gt 0}">
+    <ul class="pagination justify-content-center text-dark">
+        <li class="page-item" th:classappend="${allManufacturer.number eq 0} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/manufacturer?page={id}(id=${0})}"
+               aria-label="Previous" title="Previous Page" data-toggle="tooltip">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${i eq allManufacturer.number + 1} ? 'active'"
+            th:each="i : ${#numbers.sequence( 1, allManufacturer.totalPages, 1)}">
+            <a class="page-link" th:href="@{/manufacturer?page={id}(id=${i - 1})}" th:text="${i}"
+               th:title="${'Page '+ i}" data-toggle="tooltip"></a>
+        </li>
+        <li class="page-item" th:classappend="${allManufacturer.number eq allManufacturer.totalPages} ? 'disabled'">
+            <a class="page-link"
+               th:href="@{/manufacturer?page={id}(id=${allManufacturer.totalPages - 1})}"
+               aria-label="Next" title="Next Page" data-toggle="tooltip">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+</body>
+
+<header th:insert="blocks/footer :: footer"></header>
+
+</html>

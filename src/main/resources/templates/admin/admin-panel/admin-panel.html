@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Аккаунт</title>
+</head>
+<header th:insert="blocks/header :: header"></header>
+
+
+<body>
+    <h1>Аккаунт-админ</h1>
+    <a class="p-2 text-dark" href="/supplier">Поставщики</a>
+    <a class="p-2 text-dark" href="/manufacturer">Производители</a>
+    <a class="p-2 text-dark" href="/address">Адреса</a>
+    <a class="p-2 text-dark" href="/products">Продукты</a><br>
+
+    <a class="p-2 text-dark" href="/supplier/add">Добавить поставщика</a>
+    <a class="p-2 text-dark" href="/manufacturer/add">Добавить производителя</a>
+    <a class="p-2 text-dark" href="/product/add">Добавить продукт</a>
+
+</body>
+
+<header th:insert="blocks/footer :: footer"></header>
+
+</html>

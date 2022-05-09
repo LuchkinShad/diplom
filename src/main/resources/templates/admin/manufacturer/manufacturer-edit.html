@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Главная страница</title>
+</head>
+<header th:insert="blocks/header :: header"></header>
+
+
+<body>
+<div class="container">
+    <p><strong>Редактирование производителя</strong></p><br>
+    <div th:each="el : ${manufacturerModel}">
+        <form th:method="post" th:object="${manufacturerModel}" th:action="'/manufacturer/' + ${el.id} + '/edit'">
+
+            <input type="text" th:field="*{name}" th:value="${el.name}" id="name" class="form-control"><br>
+            <div th:if="${name != null}" th:utext="${name}" class="text-danger">...</div><br>
+            <div th:if="${name_length != null}" th:utext="${name_length}" class="text-danger">...</div><br>
+
+            <input type="text" th:field="*{inn}" th:value="${el.inn}" id="inn" class="form-control"><br>
+            <div th:if="${inn != null}" th:utext="${inn}" class="text-danger">...</div><br>
+            <div th:if="${inn_length != null}" th:utext="${inn_length}" class="text-danger">...</div><br>
+
+            <input type="text" th:field="*{bic}" th:value="${el.bic}" id="bic" class="form-control"><br>
+            <div th:if="${bic != null}" th:utext="${bic}" class="text-danger">...</div><br>
+            <div th:if="${bic_length != null}" th:utext="${bic_length}" class="text-danger">...</div><br>
+
+            <input type="text" th:field="*{phone}" th:value="${el.phone}" id="phone" class="form-control"><br>
+            <div th:if="${phone != null}" th:utext="${phone}" class="text-danger">...</div><br>
+            <div th:if="${phone_length != null}" th:utext="${phone_length}" class="text-danger">...</div><br>
+
+            <button type="submit" class="btn btn-success">Редактировать</button>
+        </form>
+    </div>
+</div>
+</body>
+
+<header th:insert="blocks/footer :: footer"></header>
+
+</html>
